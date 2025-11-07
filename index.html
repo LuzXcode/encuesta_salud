@@ -2,66 +2,104 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Encuesta sobre Conductas Alimentarias y Uso de Pantallas</title>
+  <title>📊 Encuesta Salud y Pantallas</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffe6f0; /* rosa claro */
+      color: #333;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #d6336c;
+    }
+    input, select, button {
+      padding: 8px;
+      margin: 5px 0 15px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #ff99c8;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #ff66a3;
+    }
+    .section {
+      background-color: #fff0f5;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Encuesta sobre Conductas Alimentarias y Uso de Pantallas</h1>
+  <h1>📋 Encuesta sobre Conductas Alimentarias y Uso de Pantallas</h1>
   <form action="/resultado" method="POST">
 
-    <h3>Datos personales</h3>
-    Nombre: <input type="text" name="nombre" required><br>
-    Apellido: <input type="text" name="apellido" required><br>
-    Edad: <input type="number" name="edad" required><br>
-    Género: <input type="text" name="genero"><br>
-    Peso (kg): <input type="number" name="peso"><br>
-    Talla (cm): <input type="number" name="talla"><br>
-    Tensión arterial sistólica: <input type="number" name="tension_sist"><br>
-    Tensión arterial diastólica: <input type="number" name="tension_diast"><br>
-    Alimentación: 
-    <select name="alimentacion">
-      <option>deficiente</option>
-      <option>eficiente</option>
-      <option>equilibrada</option>
-    </select><br>
-    Enfermedades crónicas: <input type="text" name="enfermedades"><br>
-    Nivel socioeconómico percibido: <input type="text" name="nivel"><br>
-    Tipo de convivencia familiar: <input type="text" name="convivencia"><br><br>
+    <div class="section">
+      <h3>👤 Datos personales</h3>
+      Nombre: <input type="text" name="nombre" required>
+      Apellido: <input type="text" name="apellido" required>
+      Edad: <input type="number" name="edad" required>
+      Género: <input type="text" name="genero">
+      Peso (kg): <input type="number" name="peso">
+      Talla (cm): <input type="number" name="talla">
+      Tensión arterial sistólica: <input type="number" name="tension_sist">
+      Tensión arterial diastólica: <input type="number" name="tension_diast">
+      Alimentación: 
+      <select name="alimentacion">
+        <option>deficiente</option>
+        <option>eficiente</option>
+        <option>equilibrada</option>
+      </select>
+      Enfermedades crónicas: <input type="text" name="enfermedades">
+      Nivel socioeconómico percibido: <input type="text" name="nivel">
+      Tipo de convivencia familiar: <input type="text" name="convivencia">
+    </div>
 
-    <!-- Resto del formulario -->
-    <h3>Uso de pantallas y redes sociales</h3>
-    Horas diarias frente a pantallas: <input type="number" name="horas_pantalla"><br>
-    Uso de pantallas durante comidas: <select name="pantallas_comida"><option>sí</option><option>no</option></select><br>
-    Comparación con otros en redes: <select name="comparacion"><option>sí</option><option>no</option></select><br>
-    Ansiedad o tristeza después de redes: <select name="ansiedad"><option>sí</option><option>no</option></select><br>
-    Presión por cumplir estereotipos: <select name="presion"><option>sí</option><option>no</option></select><br>
-    Distracción con celular al comer: <select name="distraccion"><option>sí</option><option>no</option></select><br><br>
+    <div class="section">
+      <h3>📱 Uso de pantallas y redes sociales</h3>
+      Horas diarias frente a pantallas: <input type="number" name="horas_pantalla">
+      Uso de pantallas durante comidas: <select name="pantallas_comida"><option>sí</option><option>no</option></select>
+      Comparación con otros en redes: <select name="comparacion"><option>sí</option><option>no</option></select>
+      Ansiedad o tristeza después de redes: <select name="ansiedad"><option>sí</option><option>no</option></select>
+      Presión por cumplir estereotipos: <select name="presion"><option>sí</option><option>no</option></select>
+      Distracción con celular al comer: <select name="distraccion"><option>sí</option><option>no</option></select>
+    </div>
 
-    <h3>Conductas alimentarias</h3>
-    Número de comidas diarias: <input type="number" name="comidas"><br>
-    Saltarse comidas por redes/juegos: <select name="saltarse"><option>sí</option><option>no</option></select><br>
-    Restricción alimentaria (dietas): <select name="restriccion"><option>sí</option><option>no</option></select><br>
-    Comer rápido o en exceso: <select name="comer_rapido"><option>sí</option><option>no</option></select><br><br>
+    <div class="section">
+      <h3>🍎 Conductas alimentarias</h3>
+      Número de comidas diarias: <input type="number" name="comidas">
+      Saltarse comidas por redes/juegos: <select name="saltarse"><option>sí</option><option>no</option></select>
+      Restricción alimentaria (dietas): <select name="restriccion"><option>sí</option><option>no</option></select>
+      Comer rápido o en exceso: <select name="comer_rapido"><option>sí</option><option>no</option></select>
+    </div>
 
-    <h3>Imagen corporal y autoestima</h3>
-    Grado de satisfacción corporal: <input type="text" name="satisfaccion"><br>
-    Percepción del peso: <input type="text" name="percepcion"><br>
-    Se siente valioso tal como es: <select name="valioso"><option>sí</option><option>no</option></select><br><br>
+    <div class="section">
+      <h3>💖 Imagen corporal y autoestima</h3>
+      Grado de satisfacción corporal: <input type="text" name="satisfaccion">
+      Percepción del peso: <input type="text" name="percepcion">
+      Se siente valioso tal como es: <select name="valioso"><option>sí</option><option>no</option></select>
+    </div>
 
-    <h3>Bullying y presión social</h3>
-    Ha recibido burlas por su cuerpo: <select name="burlas"><option>sí</option><option>no</option></select><br>
-    Frecuencia de bullying: <input type="text" name="frecuencia"><br>
-    Tipo de agresión: <input type="text" name="agresion"><br>
-    Sentirse rechazado o excluido: <select name="rechazo"><option>sí</option><option>no</option></select><br>
-    Evita comer en público: <select name="evita_comer"><option>sí</option><option>no</option></select><br>
-    Tiene apoyo de amigos/adultos: <select name="apoyo"><option>sí</option><option>no</option></select><br><br>
+    <div class="section">
+      <h3>🛡️ Factores de protección / resiliencia</h3>
+      Comunicación familiar durante comidas: <select name="comunicacion"><option>sí</option><option>no</option></select>
+      Actividad física regular: <select name="actividad"><option>sí</option><option>no</option></select>
+      Apoyo escolar/familiar recibido: <select name="apoyo_familiar"><option>sí</option><option>no</option></select>
+      Participación en actividades fuera de pantallas: <select name="actividades_fuera"><option>sí</option><option>no</option></select>
+    </div>
 
-    <h3>Variables protectoras / resiliencia</h3>
-    Comunicación familiar durante comidas: <select name="comunicacion"><option>sí</option><option>no</option></select><br>
-    Actividad física regular: <select name="actividad"><option>sí</option><option>no</option></select><br>
-    Apoyo escolar/familiar recibido: <select name="apoyo_familiar"><option>sí</option><option>no</option></select><br>
-    Participación en actividades fuera de pantallas: <select name="actividades_fuera"><option>sí</option><option>no</option></select><br><br>
-
-    <button type="submit">Enviar encuesta</button>
+    <button type="submit">✅ Enviar encuesta</button>
   </form>
 </body>
 </html>
+
+
