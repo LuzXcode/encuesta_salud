@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultados</title>
+  <style>
+    /* Fondo rosa claro */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #ffe6f0;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      color: #d63384;
+    }
+
+    /* Tarjetas */
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 15px 20px;
+      margin: 15px 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      font-size: 1.1em;
+    }
+
+    .riesgo {
+      border-left: 6px solid #ff4d6d;
+    }
+
+    .proteccion {
+      border-left: 6px solid #6ac1a1;
+    }
+
+    .emoji {
+      font-size: 1.3em;
+      margin-right: 8px;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #fff;
+      background-color: #d63384;
+      padding: 12px 25px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      background-color: #a81d5b;
+    }
+
+    /* Títulos de secciones */
+    h3 {
+      color: #d63384;
+      margin-top: 25px;
+    }
+  </style>
+</head>
+<body>
+  <h2>📊 Resultados del análisis</h2>
+
+  <div class="card">
+    <p><span class="emoji">👤</span><strong>Participante:</strong> {{ nombre }} {{ apellido }}, {{ genero }}, {{ edad }} años</p>
+    <p><span class="emoji">🍽</span><strong>Alimentación:</strong> {{ alimentacion }}</p>
+    <p><span class="emoji">💓</span><strong>Tensión arterial:</strong> {{ tension_sist }} / {{ tension_diast }} mmHg</p>
+  </div>
+
+  {% if riesgo %}
+    <h3>⚠️ Riesgos identificados:</h3>
+    {% for r in riesgo %}
+      <div class="card riesgo">
+        <span class="emoji">❗</span>{{ r }}
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No se identificaron riesgos importantes.</p>
+  {% endif %}
+
+  {% if proteccion %}
+    <h3>💪 Factores protectores / resiliencia:</h3>
+    {% for p in proteccion %}
+      <div class="card proteccion">
+        <span class="emoji">✅</span>{{ p }}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <a href="/">🔄 Volver al formulario</a>
+</body>
+</html>
