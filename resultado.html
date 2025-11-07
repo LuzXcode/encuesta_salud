@@ -2,98 +2,76 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Resultados</title>
+  <title>📊 Resultados</title>
   <style>
-    /* Fondo rosa claro */
     body {
-      font-family: 'Arial', sans-serif;
-      background: #ffe6f0;
-      margin: 0;
-      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffe6f0;
       color: #333;
+      padding: 20px;
     }
-
-    h2 {
-      text-align: center;
-      color: #d63384;
+    h2, h3 {
+      color: #d6336c;
     }
-
-    /* Tarjetas */
-    .card {
-      background: #fff;
-      border-radius: 15px;
-      padding: 15px 20px;
-      margin: 15px 0;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      font-size: 1.1em;
+    ul {
+      background-color: #fff0f5;
+      padding: 15px;
+      border-radius: 10px;
+      list-style: none;
     }
-
-    .riesgo {
-      border-left: 6px solid #ff4d6d;
+    li {
+      margin: 5px 0;
+      padding: 5px;
+      background-color: #ffd6e8;
+      border-radius: 5px;
     }
-
-    .proteccion {
-      border-left: 6px solid #6ac1a1;
-    }
-
-    .emoji {
-      font-size: 1.3em;
-      margin-right: 8px;
-    }
-
-    a {
+    a, button {
       display: inline-block;
       margin-top: 20px;
+      margin-right: 10px;
+      padding: 10px 15px;
+      background-color: #ff99c8;
+      color: white;
       text-decoration: none;
-      color: #fff;
-      background-color: #d63384;
-      padding: 12px 25px;
-      border-radius: 10px;
-      text-align: center;
-      font-weight: bold;
-      transition: 0.3s;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
     }
-
-    a:hover {
-      background-color: #a81d5b;
-    }
-
-    /* Títulos de secciones */
-    h3 {
-      color: #d63384;
-      margin-top: 25px;
+    a:hover, button:hover {
+      background-color: #ff66a3;
     }
   </style>
 </head>
 <body>
-  <h2>📊 Resultados del análisis</h2>
-
-  <div class="card">
-    <p><span class="emoji">👤</span><strong>Participante:</strong> {{ nombre }} {{ apellido }}, {{ genero }}, {{ edad }} años</p>
-    <p><span class="emoji">🍽</span><strong>Alimentación:</strong> {{ alimentacion }}</p>
-    <p><span class="emoji">💓</span><strong>Tensión arterial:</strong> {{ tension_sist }} / {{ tension_diast }} mmHg</p>
-  </div>
+  <h2>📋 Resultados de la encuesta</h2>
+  <p>Participante: {{ nombre }} {{ apellido }}, {{ genero }}, {{ edad }} años</p>
+  <p>Alimentación: {{ alimentacion }} | Tensión: {{ tension_sist }}/{{ tension_diast }} mmHg</p>
 
   {% if riesgo %}
     <h3>⚠️ Riesgos identificados:</h3>
-    {% for r in riesgo %}
-      <div class="card riesgo">
-        <span class="emoji">❗</span>{{ r }}
-      </div>
-    {% endfor %}
+    <ul>
+      {% for r in riesgo %}
+        <li>❌ {{ r }}</li>
+      {% endfor %}
+    </ul>
   {% else %}
-    <p>No se identificaron riesgos importantes.</p>
+    <p>✅ No se identificaron riesgos importantes.</p>
   {% endif %}
 
   {% if proteccion %}
-    <h3>💪 Factores protectores / resiliencia:</h3>
-    {% for p in proteccion %}
-      <div class="card proteccion">
-        <span class="emoji">✅</span>{{ p }}
-      </div>
-    {% endfor %}
+    <h3>🛡️ Factores protectores / resiliencia:</h3>
+    <ul>
+      {% for p in proteccion %}
+        <li>💚 {{ p }}</li>
+      {% endfor %}
+    </ul>
   {% endif %}
 
   <a href="/">🔄 Volver al formulario</a>
+  {% if riesgo or proteccion %}
+    <a href="{{ url_for('descargar') }}">📥 Descargar todas las respuestas</a>
+  {% endif %}
 </body>
 </html>
+
